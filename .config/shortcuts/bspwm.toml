@@ -1,0 +1,17 @@
+[bspwm]
+
+keymap = [
+  { keys = ["Super","Enter"], command = "termial" },
+  { keys = ["Super","_p"], command = "float termial" },
+  { keys = ["Super","_b"], command = "eww dashboard" },
+  { keys = ["Super","_d"], command = "rofi" },
+  { keys = ["Super","Alt","_q"], command = "quit bspwm" },
+  { keys = ["Super","Alt","_r"], command = "reload bspwm" },
+  { keys = ["Super","_m"], command = "monocle layout" },
+  { keys = ["Super","_t"], command = "titled state" },
+  { keys = ["Super","Shift","_t"], command = "pseudo_titled state" },
+  { keys = ["Super","Shift","_q"], command = "close node" },
+  { keys = ["Super","_q"], command = "close node" },
+  { keys = ["Super","_m"], command = "switch tiled and monocle" },
+  { keys = ["Shift","Alt","_x"], command = "lock screen" },
+]

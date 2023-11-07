@@ -1,0 +1,10 @@
+/** Basic config file **/
+
+configuration {
+  show-icons:         true;
+  // modi: "drun,window,ssh,power-menu:rofi-power-menu";
+  modi: "drun,window,ssh";
+}
+
+@theme "catppuccin-frappe"
+
