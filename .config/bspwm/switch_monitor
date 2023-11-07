@@ -1,0 +1,10 @@
+#! /bin/sh
+# xrandr --output HDMI-A-0 --mode 1920x1080
+# xrandr --output eDP --off
+
+monitors_amount=$(xrandr --listactivemonitors | wc -l)
+if [[ monitors_amount -ge 3 ]]; then
+	xrandr --output HDMI-A-0 --mode 1920x1080
+	xrandr --output eDP --off
+fi
+
