@@ -264,8 +264,8 @@ alias nv="nvim"
 # bindkey -s ^a "nvims\n"
 
 # shortcuts
-# export PATH=$PATH:$HOME/opt/shortcuts/build
-# alias sc="shortcuts"
+export PATH=$PATH:$HOME/opt/shortcuts
+alias sc="shortcuts"
 
 # documents
 export PATH=$PATH:$HOME/opt/documents
