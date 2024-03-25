@@ -37,7 +37,8 @@ text_default = [
   # { command = "bat", args = [
   #   "--paging=always",
   # ] },
-  { command = "nvim" }
+  { command = "nvim" },
+  { command = "code" },
 ]
 
 reader_default = [{ command = "evince", fork = true, silent = true }]
