@@ -1,0 +1,2 @@
+macchina -t Lithium
+startx

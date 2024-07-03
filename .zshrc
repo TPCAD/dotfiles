@@ -248,19 +248,19 @@ alias locate="plocate"
 export PATH=$PATH:/home/tpcad/.local/share/bob/nvim-bin
 alias nv="nvim"
 
-# alias nvim-chad="NVIM_APPNAME=NvChad nvim"
-# function nvims() {
-#   items=("default" "NvChad")
-#   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-#   if [[ -z $config ]]; then
-#     echo "Nothing selected"
-#     return 0
-#   elif [[ $config == "default" ]]; then
-#     config=""
-#   fi
-#   NVIM_APPNAME=$config nvim $@
-# }
-#
+alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+function nvims() {
+  items=("default" "NvChad" "LazyVim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
 # bindkey -s ^a "nvims\n"
 
 # shortcuts
@@ -276,3 +276,9 @@ alias t="todo"
 
 # dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# cross-compiler
+export PATH="$HOME/opt/cross/bin:$PATH"
+
+# base conversion
+export PATH="$HOME/opt/baseconv:$PATH"
