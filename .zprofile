@@ -1,2 +1,5 @@
 macchina -t Lithium
-startx
+
+if [[ $(who -m) =~ (tty[0-9]) ]]; then
+	startx
+fi
