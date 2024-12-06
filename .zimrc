@@ -33,6 +33,7 @@ zmodule prompt-pwd
 # zmodule asciiship
 # zmodule minimal
 zmodule asciiemoji
+zmodule jeffreytse/zsh-vi-mode
 
 #
 # Completion
