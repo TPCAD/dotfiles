@@ -11,8 +11,15 @@
 # History
 #
 
+HISTFILE="$HOME/.zhistory"
+HISTSIZE=2000000
+SAVEHIST=2000000
+
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
+
+# Record the timestamp of command
+setopt EXTENDED_HISTORY
 
 #
 # Input/output
@@ -202,7 +209,6 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 # plugins=(git zsh-autosuggestions)
-# plugins+=(zsh-vi-mode)
 
 # source /usr/share/doc/pkgfile/command-not-found.zsh
 
@@ -235,8 +241,8 @@ plugins=(git)
 alias la="ll -a"
 
 # zsh vi mode
-source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+# source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
+ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
 
 #joshuto
 alias fm="joshuto"
@@ -245,7 +251,7 @@ alias fm="joshuto"
 alias locate="plocate"
 
 # neovim
-export PATH=$PATH:/home/tpcad/.local/share/bob/nvim-bin
+export PATH=$PATH:/home/tpcad/.local/share/bob/nightly/bin
 alias nv="nvim"
 
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
@@ -276,9 +282,25 @@ alias t="todo"
 
 # dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# dotlazy
+alias dotlazy='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # cross-compiler
 export PATH="$HOME/opt/cross/bin:$PATH"
 
 # base conversion
 export PATH="$HOME/opt/baseconv:$PATH"
+
+# meow
+export PATH="$HOME/opt/meow/build:$PATH"
+# alias meow=''
+
+# yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
