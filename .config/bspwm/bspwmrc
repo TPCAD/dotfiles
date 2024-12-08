@@ -39,5 +39,5 @@ bspc rule -a Google-chrome desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-bspc rule -a float_term:float_term state=floating center=true rectangle=900x900+0+0
+bspc rule -a float_term:float_term state=floating center=true rectangle=1400x800+0+0
 bspc rule -a Clash-verge desktop='^6'
