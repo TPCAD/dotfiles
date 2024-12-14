@@ -1,0 +1,8 @@
+#! /bin/sh
+
+if [ $(nmcli | grep wlp1s0 | awk 'FNR==1' | grep "connected" | wc -c) -eq 0 ]
+then
+  nmcli radio wifi on
+else
+  nmcli radio wifi off
+fi
