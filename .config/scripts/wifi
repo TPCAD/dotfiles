@@ -1,0 +1,52 @@
+#! /bin/bash
+
+interface="wlp1s0"
+
+query_info=$(nmcli | grep "$interface" | awk 'FNR==1')
+connected=$(echo "$query_info" | awk '{print $2}')
+ssid=$(echo "$query_info" | awk '{for(i=4;i<=NF;i++)print $i}')
+
+notify() {
+    if [[ $1 == "connected" ]]; then
+        dunstify -a "wifiswitch" --icon=wifi -u normal "Wi-Fi" "Turn off Wi-Fi"
+    else
+        dunstify -a "wifiswitch" --icon=wifi -u normal "Wi-Fi" "Turn on Wi-Fi"
+    fi
+}
+
+toggle() {
+    if [[ $connected == "connected" ]]; then
+        nmcli radio wifi off
+    else
+        nmcli radio wifi on
+    fi
+
+    if [[ $1 == "notify" ]]; then
+        notify "$connected"
+    fi
+}
+
+icon() {
+    if [[ $connected == "connected" ]]; then
+        echo "󰤨"
+    else
+        echo "󰤭"
+    fi
+}
+
+status() {
+    if [[ $connected == "connected" ]]; then
+        echo "$ssid"
+    else
+        echo "Wi-Fi"
+    fi
+
+}
+
+if [[ $1 == "toggle" ]]; then
+    toggle "$2"
+elif [[ $1 == "icon" ]]; then
+    icon
+elif [[ $1 == "status" ]]; then
+    status
+fi

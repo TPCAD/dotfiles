@@ -1,0 +1,52 @@
+#! /bin/bash
+
+declare -i volume
+volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]\+%' | head -n 1 | sed 's/%//')
+
+muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+tag="volume"
+
+notify() {
+    case "$1" in
+        toggle)
+            if [[ $muted == "no" ]]; then
+                dunstify -a "changevolume" --icon=volume-normal -u low \
+                    -h string:x-dunst-stack-tag:$tag "Muted: on"
+            else
+                dunstify -a "changevolume" --icon=volume-muted -u low \
+                    -h string:x-dunst-stack-tag:$tag "Muted: off"
+            fi
+            ;;
+        up)
+            dunstify -a "changevolume" --icon=volume-normal -u low -h string:x-dunst-stack-tag:$tag \
+                -h int:value:"$volume" "Volume: $volume"
+            ;;
+        down)
+            dunstify -a "changevolume" --icon=volume-normal -u low -h string:x-dunst-stack-tag:$tag \
+                -h int:value:"$volume" "Volume: $volume"
+            ;;
+    esac
+}
+
+case "$1" in
+    up)
+        pactl set-sink-volume @DEFAULT_SINK@ +2%
+        volume+=2
+        notify "$1"
+        ;;
+    down)
+        pactl set-sink-volume @DEFAULT_SINK@ -2%
+        volume -= 2
+        notify "$1"
+        ;;
+    get)
+        echo "$volume"
+        ;;
+    status)
+        echo "$muted"
+        ;;
+    toggle)
+        pactl set-sink-mute @DEFAULT_SINK@ toggle
+        notify "$1"
+        ;;
+esac

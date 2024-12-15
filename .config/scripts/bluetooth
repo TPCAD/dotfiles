@@ -1,0 +1,59 @@
+#! /bin/bash
+
+enabled=$(bluetoothctl show | grep "Powered: yes" | wc -c)
+connected=$(echo info | bluetoothctl | grep 'not exist' | wc -c)
+
+# TODO: should be connecte device name
+name="Bluetooth"
+
+notify() {
+    if [[ $1 -ne 0 ]]; then
+        dunstify -a "bluetoothswitch" --icon=wifi -u normal "Bluetooth" "Turn off Bluetooth"
+    else
+        dunstify -a "bluetoothswitch" --icon=wifi -u normal "Bluetooth" "Turn on Bluetooth"
+    fi
+}
+
+toggle() {
+    if [[ $enabled -ne 0 ]]; then
+        bluetoothctl power off
+    else
+        bluetoothctl power on
+    fi
+
+    if [[ $1 == "notify" ]]; then
+        notify "$enabled"
+    fi
+}
+
+icon() {
+    if [[ $connected -ne 0 ]]; then
+        echo ""
+    else
+        if [[ $enabled -ne 0 ]]; then
+            echo "󰂱"
+        else
+            echo "󰂲"
+        fi
+    fi
+}
+
+status() {
+    if [[ $connected -ne 0 ]]; then
+        echo "$name"
+    else
+        if [[ $enabled -ne 0 ]]; then
+            echo "enabled"
+        else
+            echo "Bluetooth"
+        fi
+    fi
+}
+
+if [[ $1 == "toggle" ]]; then
+    toggle "$2"
+elif [[ $1 == "icon" ]]; then
+    icon
+elif [[ $1 == "status" ]]; then
+    status
+fi
