@@ -242,7 +242,7 @@ alias la="ll -a"
 
 # zsh vi mode
 # source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
-ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
+ZVM_VI_INSERT_ESCAPE_BINDKEY=kk
 
 #joshuto
 alias fm="joshuto"
