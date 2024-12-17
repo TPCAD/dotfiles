@@ -1,0 +1,11 @@
+(defvar redshift-icon "")
+;; (defvar redshift-icon "")
+(defvar redshift-status "off")
+
+(defwidget redshift []
+  (box :class "switcher-box" :orientation "v" :space-evenly false :halign "center"
+    (box :class "switcher-btn-box" :space-evenly false :valign "center"
+      (button :class "switcher-btn ${redshift-status != "off" ? "switcher-btn-on" : "switcher-btn-off"}" "${redshift-icon}")
+      (label :class "separator" :text " ")
+      (button :class "arrow-btn ${redshift-status != "off" ? "arrow-btn-on" : "arrow-btn-off"}" ""))
+    (label :class "switcher-label" :text "Night Light" :limit-width 9)))

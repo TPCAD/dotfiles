@@ -1,0 +1,10 @@
+(defpoll wifi-status :interval "1s" "$HOME/.config/scripts/wifi status")
+(defpoll wifi-icon :interval "1s" "$HOME/.config/scripts/wifi icon")
+
+(defwidget wifi []
+  (box :class "switcher-box" :orientation "v" :space-evenly false :halign "center"
+    (box :class "switcher-btn-box" :space-evenly false :valign "center"
+      (button :class "switcher-btn ${wifi-status != "Wi-Fi" ? "switcher-btn-on" : "switcher-btn-off"}" :onclick "$HOME/.config/scripts/wifi toggle" "${wifi-icon}")
+      (label :class "separator" :text " ")
+      (button :class "arrow-btn ${wifi-status != "Wi-Fi" ? "arrow-btn-on" : "arrow-btn-off"}" ""))
+    (label :class "switcher-label" :text "${wifi-status}" :limit-width 9)))

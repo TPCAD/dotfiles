@@ -1,0 +1,255 @@
+$rosewater : #F2D5CF;
+$flamingo : #EEBEBE;
+$pink : #F4B8E4;
+$mauve : #CA9EE6;
+$red : #E78284;
+$maroon : #EA999C;
+$peach : #EF9F76;
+$yellow : #E5C890;
+$green : #A6D189;
+$teal : #81C8BE;
+$sky : #99D1DB;
+$sapphire : #85C1DC;
+$blue : #8CAAEE;
+$lavender : #BABBF1;
+
+$text : #c6d0f5;
+$subtext1 : #b5bfe2;
+$subtext0 : #a5adce;
+$overlay2 : #949cbb;
+$overlay1 : #838ba7;
+$overlay0 : #737994;
+$surface2 : #626880;
+$surface1 : #51576d;
+$surface0 : #414559;
+
+$base : #303446;
+$mantle : #292C3C;
+$crust : #232634;
+
+*{
+  all: unset;
+  font-family: Hack Nerd Font Mono;
+  font-family: feather;
+  font-weight: bold;
+  background: transparent;
+  border-radius: 10px;
+}
+
+// Calendar
+calendar {
+  color: $text;
+  background-color: $crust;
+  /* border: none; */
+  border: 2px solid $surface2;
+  padding: 8px 8px 8px 8px;
+  &:selected {
+    color: $pink;
+  }
+
+  &.header {
+    color: $pink;
+    font-weight: bold;
+    border: none;
+    /* border-bottom: 1px solid $pink; */
+  }
+
+  &.highlight {
+    color: $pink;
+    font-weight: bold;
+  }
+
+  &.button {
+    color: $flamingo;
+  }
+
+  &:indeterminate {
+    color: $overlay0;
+  }
+}
+
+.settings-box {
+  border: none;
+  .settings {
+    background-color: $crust;
+    border: 2px solid $surface2;
+    margin-bottom: 10px;
+  }
+  .control-switcher {
+    .first-row {
+      margin-top: 20px;
+    }
+    .second-row {
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+// datetime module
+.datetime-box {
+  .time {
+      font-family: "Hack Nerd Font Mono";
+      font-size: 52px;
+      margin: 0px 0px 0px 30px;
+      /* background-color: $text; */
+  }
+  .date-box {
+    font-size: 22px;
+    margin: 0px 0px 0px 100px;
+    padding-top: 27px;
+    /* background-color: $text; */
+  }
+
+  .day, .date {
+      font-family: "Hack Nerd Font Mono";
+  }
+  .profile-box {
+    margin: 32px 10px 27px 160px;
+    /* padding-bottom: 10px; */
+    min-width: 52px;
+    min-height: 52px;
+    background-size: 52px;
+    border-radius: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: $text; */
+    background-image: url("./scripts/avatar.png")
+  }
+}
+
+
+// all switcher widgets
+.switcher-box {
+  .switcher-label {
+    font-size: 18px;
+    padding: 10px 0px 0px 10px;
+    /* background-color: $text; */
+  }
+  .switcher-btn-box {
+    margin: 10px 15px 0px 15px;
+    border-radius: 100px;
+    .separator {
+        font-size: 2px;
+    }
+    .switcher-btn {
+      font-size: 26px;
+      padding: 10px 20px 10px 20px;
+      border-radius: 100px 0px 0px 100px;
+    }
+    .arrow-btn {
+      font-size: 26px;
+      font-weight: bold;
+      padding: 10px 20px 10px 20px;
+      border-radius: 0px 100px 100px 0px;
+    }
+    .switcher-btn-on {
+      background-color: $blue;
+      &:hover {
+        background-color: $subtext1;
+      }
+    }
+    .switcher-btn-off {
+      background-color: $surface1;
+      &:hover {
+        background-color: $blue;
+      }
+    }
+    .arrow-btn-on {
+      background-color: $blue;
+      &:hover {
+        background-color: $subtext1;
+      }
+    }
+    .arrow-btn-off {
+      background-color: $surface1;
+      &:hover {
+        background-color: $blue;
+      }
+    }
+  }
+}
+
+
+.settings_icon {
+  font-size: 34px;
+  margin: 0px 40px 0 40px;
+  /* margin-left: 20px; */
+  /* margin-right: 20px; */
+}
+
+scale trough {
+  all: unset;
+  background-color: #22242b;
+  box-shadow: 0 2px 3px 2px #06060b;
+  border-radius: 16px;
+  min-height: 20px;
+  min-width: 390px;
+  margin: 0px 10px 0px 10px;
+}
+
+.backlight {
+  /* background-color: $base; */
+  color: $yellow;
+  margin-top: 30px;
+  trough highlight {
+    /* background-image: linear-gradient(to right, #e4c9af 30%, #f2cdcd 50%, #e0b089 100% *50); */
+    background-image: linear-gradient(to right, #FFEDD5 30%, #FDD9A5 50%, $yellow 100% *50);
+    border-radius: 10px;
+  }
+  .backlight_icon {
+    /* background-color: $text; */
+  }
+}
+
+.volume {
+  /* background-color: $crust; */
+  color: $sky;
+  margin-top: 30px;
+  trough highlight {
+    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+    border-radius: 10px;
+  }
+}
+
+.battery {
+  /* background-color: $crust; */
+  color: $flamingo;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  trough highlight {
+    background-image: linear-gradient(to right, #FFDAB9 30%, #FFC4C4 50%, $flamingo 100%);
+    border-radius: 10px;
+  }
+}
+
+.updates-box {
+  color: $text;
+  font-size: 30px;
+  .updates-icon {
+    padding: 12px 20px 12px 38px;
+  }
+}
+
+.power-menu {
+  font-size: 30px;
+  .poweroff {
+    padding: 12px 38px 12px 24px;
+    color: $red;
+  }
+  .others {
+    .reboot, .lock, .log-out {
+      padding: 12px 24px 12px 24px;
+    }
+    .reboot {
+      color: $pink;
+    }
+    .lock {
+      color: $yellow;
+    }
+    .log-out {
+      padding-left: 0px;
+      color: $blue;
+    }
+  }
+}

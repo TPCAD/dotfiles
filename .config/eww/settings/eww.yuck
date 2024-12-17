@@ -1,0 +1,58 @@
+(include "widgets/datetime.yuck")
+(include "widgets/backlight.yuck")
+(include "widgets/volume.yuck")
+(include "widgets/battery.yuck")
+(include "widgets/wifi.yuck")
+(include "widgets/bluetooth.yuck")
+(include "widgets/airplane.yuck")
+(include "widgets/redshift.yuck")
+(include "widgets/power-saver.yuck")
+(include "widgets/dnd.yuck")
+(include "widgets/power-menu.yuck")
+(include "widgets/updates.yuck")
+
+;; calendar
+(defwindow calendar_win
+  :geometry (geometry :x "-20px"
+                      :y "7%"
+                      :width "400px"
+                      :height "300px"
+                      :anchor "top right")
+  (calendar))
+
+(defwindow settings
+  :geometry (geometry :x "-20px"
+                      :y "7%"
+                      ;; :width "400px"
+                      ;; :height "300px"
+                      :anchor "top right")
+  (settings-compose))
+
+(defwidget settings-compose []
+  (box :class "settings-box" :space-evenly false :orientation "v"
+   ; date and profile
+   (box :class "settings datetime" :space-evenly false
+     (datetime))
+   ; volume and backlight control bar, battery capacity bar
+   (box :class "settings control-bar" :orientation "v" :width 540 :space-evenly false :halign "center"
+     (backlight)
+     (volume :status volume_status :percent volume_percent)
+     (battery :status battery_status :capacity battery_capacity))
+   (box :class "settings control-switcher" :orientation "v"
+    (box :class "first-row"
+      (wifi)
+      (bluetooth)
+      (airplane))
+    (box :class "second-row"
+      (redshift)
+      (power-saver)
+      (dnd)))
+   (box :class "settings power-menu" :orientation "h" :space-evenly true :width 540
+    (updates)
+    (power-menu))))
+
+
+
+
+
+
