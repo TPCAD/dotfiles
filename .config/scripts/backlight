@@ -12,6 +12,6 @@ esac
 if [[ $2 == "notify" ]]; then
     strength=$(light -G)
     tag="backlight"
-    dunstify -a "changebacklight" -u low -h string:x-dunst-stack-tag:$tag \
+    dunstify -a "changebacklight" -u low --icon=lightbulb -h string:x-dunst-stack-tag:$tag \
         -h int:value:"$strength" "Backlight: $strength"
 fi
