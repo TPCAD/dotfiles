@@ -245,7 +245,7 @@ alias la="ll -a"
 ZVM_VI_INSERT_ESCAPE_BINDKEY=kk
 
 #joshuto
-alias fm="joshuto"
+# alias fm="joshuto"
 
 #plocate
 alias locate="plocate"
@@ -253,6 +253,7 @@ alias locate="plocate"
 # neovim
 export PATH=$PATH:/home/tpcad/.local/share/bob/nightly/bin
 alias nv="nvim"
+export EDITOR="nvim"
 
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
 function nvims() {
@@ -286,7 +287,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotlazy='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # cross-compiler
-export PATH="$HOME/opt/cross/bin:$PATH"
+# export PATH="$HOME/opt/cross/bin:$PATH"
 
 # base conversion
 export PATH="$HOME/opt/baseconv:$PATH"
@@ -296,7 +297,7 @@ export PATH="$HOME/opt/meow/build:$PATH"
 # alias meow=''
 
 # yazi
-function y() {
+function fm() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -304,3 +305,14 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# edit .zshrc
+alias ezshrc='nv $HOME/.zshrc'
+
+# GOBIN
+gopath=$(go env GOPATH)
+export PATH="$gopath/bin:$PATH"
+
+# less
+export LESSOPEN="| src-hilite-lesspipe.sh %s"
+export LESS=' -R '
