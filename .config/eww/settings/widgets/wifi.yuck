@@ -7,4 +7,4 @@
       (button :class "switcher-btn ${wifi-status != "Wi-Fi" ? "switcher-btn-on" : "switcher-btn-off"}" :onclick "$HOME/.config/scripts/wifi toggle" "${wifi-icon}")
       (label :class "separator" :text " ")
       (button :class "arrow-btn ${wifi-status != "Wi-Fi" ? "arrow-btn-on" : "arrow-btn-off"}" ""))
-    (label :class "switcher-label" :text "${wifi-status}" :limit-width 9)))
+    (label :class "switcher-label" :tooltip "${wifi-status}" :text "${wifi-status}" :limit-width 9)))
