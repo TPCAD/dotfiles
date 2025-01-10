@@ -24,7 +24,7 @@ super + escape
 
 # lockscreen
 alt + shift + x
-    betterlockscreen -l pixel
+    betterlockscreen -l
 
 #
 # bspwm hotkeys
