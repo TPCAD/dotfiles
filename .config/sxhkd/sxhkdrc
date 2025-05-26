@@ -26,6 +26,10 @@ super + escape
 alt + shift + x
     betterlockscreen -l
 
+# skippy-xd
+super + x
+    skippy-xd
+
 #
 # bspwm hotkeys
 #
