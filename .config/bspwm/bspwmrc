@@ -43,3 +43,6 @@ bspc rule -a Screenkey manage=off
 bspc rule -a float_term:float_term state=floating center=true rectangle=1400x800+0+0
 bspc rule -a float_contrl:float_control state=floating center=true rectangle=1400x800+0+0
 bspc rule -a Clash-verge desktop='^6'
+
+# load apps after initialization
+clash-verge
