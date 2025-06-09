@@ -16,10 +16,13 @@ super + b
 
 # program launcher
 super + d
+	rofi -show drun -theme ~/.config/rofi/launcher.rasi
+
+super + space
 	rofi -show drun
 
 # make sxhkd reload its configuration files:
-super + escape
+super + Escape
 	pkill -USR1 -x sxhkd
 
 # lockscreen
