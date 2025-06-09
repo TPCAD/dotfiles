@@ -1,0 +1,150 @@
+configuration {
+    modi: "drun,window,filebrowser";
+    show-icons: true;
+    display-drun: "";
+    drun-display-format: "{name}";
+
+    // use control+h,j,k,l to select elements
+    kb-mode-complete: "";
+    kb-remove-char-back: "BackSpace,Shift+BackSpace";
+    kb-row-right: "Control+l";
+    kb-row-left: "Control+h";
+
+    kb-accept-entry: "Return,KP_Enter";
+    kb-row-down: "Control+j";
+    kb-remove-to-eol: "";
+    kb-row-up: "Control+k";
+
+    // switch modes witn control+n, p
+    kb-mode-next: "Control+n";
+    kb-mode-previous: "Control+p";
+}
+
+@theme "catppuccin-frappe"
+
+// override default theme
+* {
+    transparent: rgba(46,52,64,0.9);
+    background-color: transparent;
+    font: "Hack Nerd Font Bold 16";
+}
+
+window {
+    fullscreen: true;
+    background-color: @transparent;
+}
+
+mainbox {
+    // 子组件的间距
+    spacing: 100px;
+    // 与父组件的距离
+    padding: 100px 225px;
+    children: [ "inputbar", "listview" ];
+}
+
+/* inputbar */
+inputbar {
+    spacing: 20px;
+    padding: 18px;
+    border-radius: 12px;
+    background-color: white / 5%;
+    children: [ "prompt", "entry" ];
+}
+prompt {
+    padding: 0px 8px 0px 0px;
+}
+entry {
+    cursor: text;
+    placeholder: "Search";
+}
+
+/* listview */
+listview {
+    columns: 8;
+    lines: 4;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    reverse: false;
+    fixed-height: true;
+    fixed-columns: true;
+
+    cursor: "default";
+}
+scrollbar {
+    handle-width:                5px ;
+    handle-color:                @blue;
+    border-radius:               0px;
+    background-color:            @bg-alt;
+}
+
+/* elements */
+element {
+    spacing: 15px;
+    padding: 35px 10px;
+    border-radius: 15px;
+    orientation: vertical;
+    cursor: pointer;
+}
+element selected.normal {
+    background-color:            white / 10%;
+}
+element-icon {
+    size:                        72px;
+    cursor:                      inherit;
+}
+element-text {
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+/* message */
+error-message {
+    padding:                     100px;
+    background-color:            black / 10%;
+}
+textbox {
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    highlight:                   none;
+}
+
+// +------------------------------------------------------------------------------------+
+// | window {BOX:vertical}                                                              |
+// | +-------------------------------------------------------------------------------+  |
+// | | mainbox  {BOX:vertical}                                                       |  |
+// | | +---------------------------------------------------------------------------+ |  |
+// | | | inputbar {BOX:horizontal}                                                 | |  |
+// | | | +---------+ +-+ +-------------------------------+ +---+ +---+ +---+ +---+ | |  |
+// | | | | prompt  | |:| | entry                         | |#fr| | / | |#ns| |ci | | |  |
+// | | | +---------+ +-+ +-------------------------------+ +---+ +---+ +---+ +---+ | |  |
+// | | +---------------------------------------------------------------------------+ |  |
+// | |                                                                               |  |
+// | | +---------------------------------------------------------------------------+ |  |
+// | | | message                                                                   | |  |
+// | | | +-----------------------------------------------------------------------+ | |  |
+// | | | | textbox                                                               | | |  |
+// | | | +-----------------------------------------------------------------------+ | |  |
+// | | +---------------------------------------------------------------------------+ |  |
+// | |                                                                               |  |
+// | | +---------------------------------------------------------------------------+ |  |
+// | | | listview                                                                  | |  |
+// | | | +---------------------------------------------------------------------+   | |  |
+// | | | | element                                                             |   | |  |
+// | | | | +-----------------+ +---------------------------------------------+ |   | |  |
+// | | | | |element─icon     | |element─text                                 | |   | |  |
+// | | | | +-----------------+ +---------------------------------------------+ |   | |  |
+// | | | +---------------------------------------------------------------------+   | |  |
+// | | +---------------------------------------------------------------------------+ |  |
+// | |                                                                               |  |
+// | | +---------------------------------------------------------------------------+ |  |
+// | | |  mode─switcher {BOX:horizontal}                                           | |  |
+// | | | +-------─+   +--------+  +-------+ +------------------------------------+ | |  |
+// | | | | Button |   | Button |  | Button| | Button                             | | |  |
+// | | | +-------─+   +--------+  +-------+ +------------------------------------+ | |  |
+// | | +---------------------------------------------------------------------------+ |  |
+// | +-------------------------------------------------------------------------------+  |
+// +------------------------------------------------------------------------------------+
