@@ -238,6 +238,15 @@ plugins=(git)
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Tmux，Zellij 等终端复用工具在创建 shell 时会执行 .zshrc，这样会重复执行 export
+# 语句，导致环境变量被重复添加。
+#
+# 对于 Zsh，有一个变量 `path`，它是 `PATH` 的镜像，修改 `path` 会自动同步 `PATH`。
+# `typeset -a` 将 `path` 设置为数组类型，`-U` 将其设置为“唯一元素”，即自动去重。
+#
+# 添加新的环境变量可以使用 `path=($path /foo)`。
+typeset -aU path
+
 alias la="ll -a"
 
 # zsh vi mode
@@ -251,7 +260,8 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=kk
 alias locate="plocate"
 
 # neovim
-export PATH=$PATH:/home/tpcad/.local/share/bob/nightly/bin
+path=($path /home/tpcad/.local/share/bob/nvim-bin)
+# export "PATH=$PATH:/home/tpcad/.local/share/bob/nvim-bin"
 alias nv="nvim"
 export EDITOR="nvim"
 
@@ -267,14 +277,16 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 
+alias pnv="NVIM_APPNAME=pnvim nvim"
+
 # bindkey -s ^a "nvims\n"
 
 # shortcuts
-export PATH=$PATH:$HOME/opt/shortcuts
+# export PATH=$PATH:$HOME/opt/shortcuts
 alias sc="shortcuts"
 
 # documents
-export PATH=$PATH:$HOME/opt/documents
+# export PATH=$PATH:$HOME/opt/documents
 alias doc="documents"
 
 # todo
@@ -289,10 +301,10 @@ alias dotlazy='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # export PATH="$HOME/opt/cross/bin:$PATH"
 
 # base conversion
-export PATH="$HOME/opt/baseconv:$PATH"
+# export PATH="$HOME/opt/baseconv:$PATH"
 
 # meow
-export PATH="$HOME/opt/meow/build:$PATH"
+# export PATH="$HOME/opt/meow/build:$PATH"
 # alias meow=''
 
 # yazi
@@ -309,8 +321,8 @@ function fm() {
 alias ezshrc='nv $HOME/.zshrc'
 
 # GOBIN
-gopath=$(go env GOPATH)
-export PATH="$gopath/bin:$PATH"
+# gopath=$(go env GOPATH)
+# export PATH="$gopath/bin:$PATH"
 
 # less
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
