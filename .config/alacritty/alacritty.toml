@@ -3,7 +3,7 @@
 TERM = "xterm-256color"
 
 [font]
-size = 18.0
+size = 16.0
 
 [font.bold]
 family = "Maple Mono NL NF CN"
