@@ -285,6 +285,7 @@ alias sc="shortcuts"
 alias doc="documents"
 
 # todo
+alias todo="NVIM_APPNAME=todosvim nvim"
 alias t="todo"
 
 # dotfiles
