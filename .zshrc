@@ -253,15 +253,10 @@ alias la="ll -a"
 # source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 ZVM_VI_INSERT_ESCAPE_BINDKEY=kk
 
-#joshuto
-# alias fm="joshuto"
-
 #plocate
 alias locate="plocate"
 
 # neovim
-path=($path /home/tpcad/.local/share/bob/nvim-bin)
-# export "PATH=$PATH:/home/tpcad/.local/share/bob/nvim-bin"
 alias nv="nvim"
 export EDITOR="nvim"
 
