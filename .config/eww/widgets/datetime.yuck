@@ -1,0 +1,8 @@
+(defpoll time :interval "1s" "date +'%H:%M:%S'")
+(defpoll date :interval "1s" "date +'%d %b %Y %a'")
+(defpoll day :interval "1s" "date +'%A'")
+
+(defwidget datetime []
+  (box :class "widget datetime-container" :width 376 :space-evenly false :halign "center" :orientation "v"
+   (label :class "time" :text time)
+   (label :class "date" :text date)))

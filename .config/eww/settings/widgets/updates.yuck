@@ -1,5 +1,0 @@
-(defpoll packages :interval "1h" "$HOME/.config/scripts/updates")
-(defwidget updates []
-    (box :class "updates-box" :orientation "h" :valign "center" :hexpand false :space-evenly false
-      (label :class "updates-icon" :text "")
-      (label :class "updates-label" :text "${packages}")))

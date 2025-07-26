@@ -12,33 +12,37 @@
 (include "widgets/updates.yuck")
 
 ;; calendar
-(defwindow calendar_win
-  :geometry (geometry :x "-20px"
-                      :y "7%"
+(defwindow time-panel
+  :geometry (geometry :x "0px"
+                      :y "4%"
                       :width "400px"
-                      :height "300px"
-                      :anchor "top right")
-  (calendar))
+                      :anchor "top center")
+  (time-container))
+
+(defwidget time-container []
+  (box :class "general" :space-evenly false :orientation "v"
+    (datetime)
+    (box :class "calendar-container" :width 376 :halign "center"
+      (calendar))))
 
 (defwindow settings
-  :geometry (geometry :x "-20px"
-                      :y "7%"
-                      ;; :width "400px"
-                      ;; :height "300px"
+  :geometry (geometry :x "-12px"
+                      :y "4%"
+                      :width "580px"
                       :anchor "top right")
   (settings-compose))
 
 (defwidget settings-compose []
   (box :class "settings-box" :space-evenly false :orientation "v"
    ; date and profile
-   (box :class "settings datetime" :space-evenly false
-     (datetime))
+   ;; (box :class "settings datetime" :width 540 :space-evenly false :halign "center"
+   ;;   (datetime))
    ; volume and backlight control bar, battery capacity bar
    (box :class "settings control-bar" :orientation "v" :width 540 :space-evenly false :halign "center"
      (backlight)
      (volume :status volume_status :percent volume_percent)
      (battery :status battery_status :capacity battery_capacity))
-   (box :class "settings control-switcher" :orientation "v"
+   (box :class "settings control-switcher" :orientation "v" :width 540 :halign "center"
     (box :class "first-row"
       (wifi)
       (bluetooth)
@@ -47,12 +51,6 @@
       (redshift)
       (power-saver)
       (dnd)))
-   (box :class "settings power-menu" :orientation "h" :space-evenly true :width 540
+   (box :class "settings power-menu" :orientation "h" :space-evenly true :width 540 :halign "center"
     (updates)
     (power-menu))))
-
-
-
-
-
-

@@ -12,7 +12,7 @@ $HOME/.config/polybar/launch.sh
 
 # eww widgets
 # $HOME/.config/eww/launch.sh
-eww daemon -c $HOME/.config/eww/settings
+eww daemon -c $HOME/.config/eww
 
 # dunst
 # dunst can't not reload configuration automatically

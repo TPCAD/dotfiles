@@ -1,0 +1,33 @@
+/* calendar module style */
+.calendar-container {
+  margin-bottom: 12px;
+}
+
+calendar {
+  color: $text;
+  background-color: $mantle;
+  padding: 8px 8px 8px 8px;
+  font-family: "Maple Mono NL NF CN";
+  &:selected {
+    color: $pink;
+  }
+
+  &.header {
+    color: $yellow;
+    font-weight: bold;
+    border: none;
+  }
+
+  &.highlight {
+    color: $peach;
+    font-weight: bold;
+  }
+
+  &.button {
+    color: $yellow;
+  }
+
+  &:indeterminate {
+    color: $overlay0;
+  }
+}

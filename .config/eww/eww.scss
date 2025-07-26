@@ -1,31 +1,6 @@
-$rosewater : #F2D5CF;
-$flamingo : #EEBEBE;
-$pink : #F4B8E4;
-$mauve : #CA9EE6;
-$red : #E78284;
-$maroon : #EA999C;
-$peach : #EF9F76;
-$yellow : #E5C890;
-$green : #A6D189;
-$teal : #81C8BE;
-$sky : #99D1DB;
-$sapphire : #85C1DC;
-$blue : #8CAAEE;
-$lavender : #BABBF1;
-
-$text : #c6d0f5;
-$subtext1 : #b5bfe2;
-$subtext0 : #a5adce;
-$overlay2 : #949cbb;
-$overlay1 : #838ba7;
-$overlay0 : #737994;
-$surface2 : #626880;
-$surface1 : #51576d;
-$surface0 : #414559;
-
-$base : #303446;
-$mantle : #292C3C;
-$crust : #232634;
+@import 'styles/palette'
+@import 'styles/datetime'
+@import 'styles/calendar'
 
 *{
   all: unset;
@@ -33,90 +8,32 @@ $crust : #232634;
   font-family: feather;
   font-weight: bold;
   background: transparent;
-  border-radius: 10px;
+  border-radius: 18px;
 }
 
-// Calendar
-calendar {
-  color: $text;
+.general {
   background-color: $crust;
-  /* border: none; */
-  border: 2px solid $surface2;
-  padding: 8px 8px 8px 8px;
-  &:selected {
-    color: $pink;
-  }
-
-  &.header {
-    color: $pink;
-    font-weight: bold;
-    border: none;
-    /* border-bottom: 1px solid $pink; */
-  }
-
-  &.highlight {
-    color: $pink;
-    font-weight: bold;
-  }
-
-  &.button {
-    color: $flamingo;
-  }
-
-  &:indeterminate {
-    color: $overlay0;
-  }
 }
 
-.settings-box {
-  border: none;
-  .settings {
-    background-color: $crust;
-    border: 2px solid $surface2;
-    margin-bottom: 10px;
-  }
-  .control-switcher {
-    .first-row {
-      margin-top: 20px;
-    }
-    .second-row {
-      margin-top: 10px;
-      margin-bottom: 30px;
-    }
-  }
-}
 
-// datetime module
-.datetime-box {
-  .time {
-      font-family: "Hack Nerd Font Mono";
-      font-size: 52px;
-      margin: 0px 0px 0px 30px;
-      /* background-color: $text; */
-  }
-  .date-box {
-    font-size: 22px;
-    margin: 0px 0px 0px 100px;
-    padding-top: 27px;
-    /* background-color: $text; */
-  }
-
-  .day, .date {
-      font-family: "Hack Nerd Font Mono";
-  }
-  .profile-box {
-    margin: 32px 10px 27px 160px;
-    /* padding-bottom: 10px; */
-    min-width: 52px;
-    min-height: 52px;
-    background-size: 52px;
-    border-radius: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* background-color: $text; */
-    background-image: url("./scripts/avatar.png")
-  }
-}
+/* .settings-box { */
+/*   background-color: $crust; */
+/*   .settings { */
+/*     background-color: $mantle; */
+/*     border: 0px solid $surface2; */
+/*     margin-bottom: 20px; */
+/*   } */
+/*   .control-switcher { */
+/*     .first-row { */
+/*       margin-top: 20px; */
+/*     } */
+/*     .second-row { */
+/*       margin-top: 10px; */
+/*       margin-bottom: 30px; */
+/*     } */
+/*   } */
+/* } */
+/**/
 
 
 // all switcher widgets

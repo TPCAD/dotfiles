@@ -1,0 +1,19 @@
+/* datetime module style */
+.widget {
+  background-color: $mantle;
+}
+
+.datetime-container {
+  margin: 12px 0px;
+  .time {
+    color: $pink;
+    font-family: "Maple Mono NL NF CN";
+    font-size: 62px;
+  }
+  .date {
+    color: $text;
+    font-family: "Maple Mono NL NF CN";
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+}

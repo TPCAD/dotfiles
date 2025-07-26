@@ -1,9 +1,0 @@
-#! /bin/bash
-eww_config="$HOME/.config/eww/settings"
-
-eww open settings --toggle -c "$eww_config"
-
-if [[ $1 == "bluetooth" ]]; then
-	cd || return
-	blueman-manager
-fi
