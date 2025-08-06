@@ -1,0 +1,9 @@
+(defpoll bluetooth-icon :interval "1s" "$HOME/.config/scripts/bluetooth icon")
+(defpoll bluetooth-status :interval "1s" "$HOME/.config/scripts/bluetooth status")
+
+(defwidget bluetooth []
+  (box :class "bluetooth-container"
+    (eventbox :class "${bluetooth-status != "Bluetooth" ? "switcher-on" : "switcher-off"}" :onclick "$HOME/.config/scripts/bluetooth toggle"
+      (box :width 225 :orientation "h" :space-evenly false :halign "center"
+        (label :class "switcher-icon" :text "${bluetooth-icon}")
+        (label :class "switcher-text" :tooltip "${bluetooth-status}" :text "${bluetooth-status}" :limit-width 10)))))

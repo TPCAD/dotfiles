@@ -4,12 +4,12 @@
 (include "widgets/battery.yuck")
 (include "widgets/wifi.yuck")
 (include "widgets/bluetooth.yuck")
-(include "widgets/airplane.yuck")
-(include "widgets/redshift.yuck")
-(include "widgets/power-saver.yuck")
-(include "widgets/dnd.yuck")
+;; (include "widgets/airplane.yuck")
+;; (include "widgets/redshift.yuck")
+;; (include "widgets/power-saver.yuck")
+;; (include "widgets/dnd.yuck")
 (include "widgets/power-menu.yuck")
-(include "widgets/updates.yuck")
+(include "widgets/cpu.yuck")
 
 ;; calendar
 (defwindow time-panel
@@ -25,32 +25,30 @@
     (box :class "calendar-container" :width 376 :halign "center"
       (calendar))))
 
-(defwindow settings
+(defwindow settings-panel
   :geometry (geometry :x "-12px"
                       :y "4%"
-                      :width "580px"
+                      :width "480px"
                       :anchor "top right")
-  (settings-compose))
+  (settings-container))
 
-(defwidget settings-compose []
-  (box :class "settings-box" :space-evenly false :orientation "v"
-   ; date and profile
-   ;; (box :class "settings datetime" :width 540 :space-evenly false :halign "center"
-   ;;   (datetime))
-   ; volume and backlight control bar, battery capacity bar
-   (box :class "settings control-bar" :orientation "v" :width 540 :space-evenly false :halign "center"
-     (backlight)
-     (volume :status volume_status :percent volume_percent)
-     (battery :status battery_status :capacity battery_capacity))
-   (box :class "settings control-switcher" :orientation "v" :width 540 :halign "center"
-    (box :class "first-row"
-      (wifi)
-      (bluetooth)
-      (airplane))
-    (box :class "second-row"
-      (redshift)
-      (power-saver)
-      (dnd)))
-   (box :class "settings power-menu" :orientation "h" :space-evenly true :width 540 :halign "center"
-    (updates)
-    (power-menu))))
+(defwidget settings-container []
+  (box :class "general" :space-evenly false :orientation "v"
+    (box :class "powermenu-container" :width 460 :orientation "h" :space-evenly true :halign "center"
+     (battery :status battery_status :capacity battery_capacity)
+     (power-menu))
+    ; volume and backlight control bar
+    (box :class "container status-container" :width 460 :orientation "v" :space-evenly false :halign "center"
+      (box :class "container monitor-container" :space-evenly false :halign "center"
+       (cpu)
+       (memory)
+       (disk))
+      (backlight)
+      (volume :status volume_status :percent volume_percent))
+    (box :class "long-switcher-container" :width 460 :orientation "h" :space-evenly false :halign "center"
+     (wifi)
+     (box :width 10)
+     (bluetooth))))
+    ;; (box :class "container switcher-container" :width 460 :orientation "v" :halign "center"
+    ;;   (box :class "first-row" (airplane) (dnd))
+    ;;   (box :class "second-row" (redshift) (power-saver)))))

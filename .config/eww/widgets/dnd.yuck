@@ -1,0 +1,10 @@
+(defpoll dnd-icon :interval "1s" "$HOME/.config/scripts/dnd icon")
+(defpoll dnd-status :interval "1s" "$HOME/.config/scripts/dnd status")
+
+(defwidget dnd []
+  (box :class "switcher-box" :orientation "v" :space-evenly false :halign "center"
+    (box :class "switcher-btn-box" :space-evenly false :valign "center"
+      (button :class "switcher-btn ${dnd-status != "off" ? "switcher-btn-on" : "switcher-btn-off"}" :onclick "$HOME/.config/scripts/dnd toggle" "${dnd-icon}")
+      (label :class "separator" :text " ")
+      (button :class "arrow-btn ${dnd-status != "off" ? "arrow-btn-on" : "arrow-btn-off"}" ""))
+    (label :class "switcher-label" :text "DND" :limit-width 9)))

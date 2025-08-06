@@ -1,0 +1,17 @@
+(defwidget cpu []
+  (box :class "widget cpu-container" :orientation "v" :space-evenly false
+    (circular-progress :width 120 :height 120 :class "cpu-bar" :value {round(EWW_CPU.avg,0)} :start-at 75 :thickness 9 :clockwise true
+      (box :class "cpu-icon" (label :text "")))
+    (box :class "cpu-text" :halign "center" (label :text "CPU ") (label :class "perc" :text "${round(EWW_CPU.avg,0)}%"))))
+
+(defwidget memory []
+  (box :class "widget mem-container" :orientation "v" :space-evenly false
+    (circular-progress :width 120 :height 120 :class "mem-bar" :value {round(EWW_RAM.used_mem_perc,0)} :start-at 75 :thickness 9 :clockwise true
+      (box :class "mem-icon" (label :text "")))
+    (box :class "mem-text" :halign "center" (label :text "MEM ") (label :class "perc" :text "${round(EWW_RAM.used_mem_perc,0)}%"))))
+
+(defwidget disk []
+  (box :class "widget disk-container" :orientation "v" :space-evenly false
+    (circular-progress :width 120 :height 120 :class "disk-bar" :value {round(EWW_DISK["/"].used_perc,0)} :start-at 75 :thickness 9 :clockwise true
+      (box :class "disk-icon" (label :text "")))
+    (box :class "disk-text" :halign "center" (label :text "DISK ") (label :class "perc" :text "${round(EWW_DISK["/"].used_perc,0)}%"))))

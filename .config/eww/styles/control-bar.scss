@@ -1,0 +1,31 @@
+.backlight-icon, .volume-icon {
+  font-size: 28px;
+  margin: 10px 20px 10px 23px;
+}
+
+scale trough {
+  all: unset;
+  /* background-color: #22242b; */
+  background-color: $crust;
+  box-shadow: 0 2px 3px 2px #06060b;
+  border-radius: 16px;
+  min-height: 20px;
+  min-width: 370px;
+  margin: 0px 10px 0px 4px;
+}
+
+.backlight-container {
+  color: $yellow;
+  trough highlight {
+    background-image: linear-gradient(to right, #FFEDD5 30%, #FDD9A5 50%, $yellow 100% *50);
+    border-radius: 10px;
+  }
+}
+
+.volume-container {
+  color: $sky;
+  trough highlight {
+    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+    border-radius: 10px;
+  }
+}

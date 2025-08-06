@@ -1,0 +1,21 @@
+.power-menu {
+  font-size: 30px;
+  .poweroff {
+    padding: 0 18px;
+    color: $red;
+  }
+  .others {
+    .reboot, .lock, .log-out {
+      padding: 0 18px;
+    }
+    .reboot {
+      color: $pink;
+    }
+    .lock {
+      color: $yellow;
+    }
+    .log-out {
+      color: $blue;
+    }
+  }
+}

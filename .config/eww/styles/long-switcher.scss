@@ -1,0 +1,32 @@
+.long-switcher-container {
+  margin-bottom: 10;
+}
+.switcher-icon {
+  font-size: 44px;
+  margin: 0 20px 0 14px;
+}
+
+.switcher-text {
+  /* background-color: $red; */
+  font-size: 24px;
+  margin-left: 8px;
+}
+
+.bluetooth-container, .wifi-container {
+  background-color: $mantle;
+  margin-top: 10px;
+}
+
+.switcher-on {
+  background-color: $blue;
+  &:hover {
+    background-color: $subtext1;
+  }
+}
+
+.switcher-off {
+  background-color: $surface1;
+  &:hover {
+    background-color: $blue;
+  }
+}

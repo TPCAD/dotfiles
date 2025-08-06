@@ -1,0 +1,33 @@
+.cpu-container, .mem-container, .disk-container {
+  margin: 0px 10px;
+  /* background-color: $crust; */
+  .cpu-bar, .mem-bar, .disk-bar {
+    margin-top: 10px;
+  }
+  .cpu-icon, .mem-icon, .disk-icon {
+    font-size: 40px;
+    margin: 19px 24px 22px 11px;
+    /* background-color: $blue; */
+  }
+  .cpu-text, .mem-text, .disk-text {
+    font-size: 20px;
+    /* background-color: $blue; */
+    margin: 1px 0;
+  }
+  .perc {
+    color: $text;
+  }
+}
+
+.cpu-container {
+  color: $red;
+}
+
+.mem-container {
+  color: $sky;
+}
+
+.disk-container {
+  color: $blue;
+}
+

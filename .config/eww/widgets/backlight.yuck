@@ -1,0 +1,17 @@
+(defwidget backlight []
+  (box :class "backlight-container"
+       :orientation "h"
+       :spacing 3
+       :space-evenly false
+    (label :class "backlight-icon" :text "")
+    (scale :class "backlight-scale"
+           :value light_percent
+           :tooltip "${light_percent}"
+           :max 100
+           :min 0
+           :onchange "light -S {}%")))
+
+(defpoll light_percent
+  :interval "1s"
+  :initial "0"
+  `light -G | awk '{printf "%d", $1}'`)

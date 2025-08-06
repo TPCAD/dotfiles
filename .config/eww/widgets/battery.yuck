@@ -1,0 +1,18 @@
+(defwidget battery [status capacity]
+  (box :class "battery-container" :orientation "h" :valign "center" :hexpand false :space-evenly false
+   (label :class "battery-icon" :text {status == "Charging" ? "" :
+                                          capacity < 15 ? "" :
+                                          capacity < 30 ? "" :
+                                          capacity < 45 ? "" :
+                                          capacity < 60 ? "" :
+                                          capacity < 75 ? "" : ""})
+   (label :class "battery-capacity" :text capacity)))
+
+(defpoll battery_status
+  :interval "1m"
+  :initial "Discharging"
+  `cat /sys/class/power_supply/BAT1/status`)
+(defpoll battery_capacity
+  :interval "1m"
+  :initial "0"
+  `cat /sys/class/power_supply/BAT1/capacity`)

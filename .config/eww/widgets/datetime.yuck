@@ -3,6 +3,6 @@
 (defpoll day :interval "1s" "date +'%A'")
 
 (defwidget datetime []
-  (box :class "widget datetime-container" :width 376 :space-evenly false :halign "center" :orientation "v"
+  (box :class "datetime-container" :width 376 :space-evenly false :halign "center" :orientation "v"
    (label :class "time" :text time)
    (label :class "date" :text date)))
