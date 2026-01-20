@@ -1,24 +1,24 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "7112e91"
-hash = "1f3dad061209081a6b04dd6ff2cb06c7"
+rev = "4e55902"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "7112e91"
-hash = "7918aab6a71caf31b58411f789195677"
+rev = "4e55902"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-frappe"
-rev = "68326b4"
-hash = "7780fbbc8965da5a31a76a0dcd4d1216"
+rev = "4a1802a"
+hash = "6f261f00e5235001b8d6bcd7464d3077"
 
 [[flavor.deps]]
 use = "sanjinso/monokai-vibrant"
 rev = "8b68223"
-hash = "f4458ebaf8961d714eba05fe5ba40166"
+hash = "7cf995e2185a45b5141ce807b7eced60"
 
 [[flavor.deps]]
 use = "Chromium-3-Oxide/everforest-medium"
-rev = "3d5f847"
-hash = "9b4190e2447f2c843fee23ea5f068f6"
+rev = "0158f0f"
+hash = "a7c36abf0b13289aceb1c20a17c6a63e"
