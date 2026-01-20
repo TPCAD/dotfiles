@@ -33,6 +33,9 @@ alt + shift + x
 super + x
     skippy-xd
 
+super + r
+    $HOME/.config/scripts/show_scripts_in_rofi.sh
+
 #
 # bspwm hotkeys
 #
