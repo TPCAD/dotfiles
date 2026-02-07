@@ -1,17 +1,17 @@
 #! /bin/sh
 
+# switch monitor
+"$HOME/.config/bspwm/monitor.sh"
+
 xset r rate 300 50
 
 # sxhkd
 pgrep -x sxhkd >/dev/null || sxhkd &
 
-$HOME/.config/bspwm/switch_monitor
-
 # polybar
 $HOME/.config/polybar/launch.sh
 
 # eww widgets
-# $HOME/.config/eww/launch.sh
 eww daemon -c $HOME/.config/eww
 
 # dunst
@@ -20,11 +20,6 @@ pkill dunst && dunst
 
 # picom
 picom -b
-
-# bspc monitor -d I II III IV V VI VII VIII IX X
-# bspc monitor HDMI-A-0 I II III IV V VI VII VIII IX X
-# bspc monitor eDP I II III IV V VI VII VIII IX X
-bspc monitor -d 1 2 3 4 5 6
 
 bspc config border_width 2
 bspc config window_gap 12
@@ -39,12 +34,10 @@ bspc config top_monocle_padding 10
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Google-chrome desktop='^2'
+bspc rule -a firefox desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a float_term:float_term state=floating center=true rectangle=1400x800+0+0
 bspc rule -a float_contrl:float_control state=floating center=true rectangle=1400x800+0+0
 bspc rule -a Clash-verge desktop='^6'
-
-# load apps after initialization
-clash-verge
