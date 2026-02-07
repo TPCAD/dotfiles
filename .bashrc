@@ -2,9 +2,10 @@
 # ~/.bashrc
 #
 
+# source ble.sh
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-[[ $- == *i* ]] && source -- /usr/share/blesh/ble.sh --attach=none --rcfile ~/.blerc
+# [[ $- != *i* ]] && return
+# [[ $- == *i* ]] && source -- /usr/share/blesh/ble.sh --attach=none --rcfile ~/.blerc
 
 OK_COLOR="\033[32m"
 ERR_COLOR="\033[31m"
@@ -48,26 +49,27 @@ current_dir() {
     fi
 }
 
-# rightprompt() {
-#     branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-#     color=$OK_COLOR
-#     [[ $(git status --porcelain 2>/dev/null) ]] && color=$ERR_COLOR
-#
-#     # printf "$color%*s$RESET_COLOR" $COLUMNS "$branch "
-#     printf "%*s" $COLUMNS "\q{contrib/git-info}"
-# }
-#
-# PS1='\[$(tput sc; rightprompt; tput rc)\]$(exitstatus) > $(current_dir)\n\$ '
-PS1='$(exitstatus) $(current_dir)\n\$ '
+git_info() {
+    if ! command -v git >/dev/null 2>&1; then
+        echo ""
+        return
+    fi
+
+    source -- /usr/share/git/completion/git-prompt.sh
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_STATESEPARATOR="|"
+    export GIT_PS1_SHOWCOLORHINTS=1
+    echo "$(__git_ps1 ' (%s)')"
+}
+
+PS1='$(exitstatus) $(current_dir) $(git_info)\n\$ '
 
 shopt -s checkwinsize
+shopt -s autocd
 
 HISTTIMEFORMAT="%Y/%m/%d %H:%M:%S "
-
-# prevent tmux duplicate entry
-if [[ -z $TMUX ]]; then
-    export PATH="$PATH:$HOME/opt/meow/build"
-fi
 
 alias nv="nvim"
 export EDITOR="nvim"
@@ -102,4 +104,11 @@ alias ebashrc='nv $HOME/.bashrc'
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
-[[ ! ${BLE_VERSION-} ]] || ble-attach
+# prevent tmux duplicate entry
+if [[ -z $TMUX ]]; then
+    # meow
+    export PATH="$PATH:$HOME/Projects/meow"
+    export PATH="$PATH:$HOME/opt"
+fi
+
+# [[ ! ${BLE_VERSION-} ]] || ble-attach
