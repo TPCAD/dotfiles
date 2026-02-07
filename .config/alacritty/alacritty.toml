@@ -23,7 +23,7 @@ style = "Italic"
 
 [font.normal]
 family = "Maple Mono NL NF CN"
-style = "Regular"
+style = "Medium"
 
 [font.offset]
 x = 0
