@@ -38,12 +38,12 @@ current_dir() {
 
     IFS='/' read -ra parts <<<"$path"
     if ((${#parts[@]} > 3)); then
-        echo -e "$DIR_COLOR${parts[n - 2]}$RESET_COLOR/$DIR_COLOR${parts[n - 1]}$RESET_COLOR"
+        echo -e "$DIR_COLOR${parts[n-2]}$RESET_COLOR/$DIR_COLOR${parts[n-1]}$RESET_COLOR"
     elif ((${#parts[@]} == 3)); then
         [[ ${parts[0]} == '' ]] && printf "/"
-        echo -e "$DIR_COLOR${parts[n - 2]}$RESET_COLOR/$DIR_COLOR${parts[n - 1]}$RESET_COLOR"
+        echo -e "$DIR_COLOR${parts[n-2]}$RESET_COLOR/$DIR_COLOR${parts[n-1]}$RESET_COLOR"
     elif ((${#parts[@]} == 2)); then
-        [[ ${parts[0]} == '' ]] && echo -e "/$DIR_COLOR${parts[-1]}$RESET_COLOR" || echo -e "$DIR_COLOR${parts[n - 2]}$RESET_COLOR/$DIR_COLOR${parts[n - 1]}$RESET_COLOR"
+        [[ ${parts[0]} == '' ]] && echo -e "/$DIR_COLOR${parts[-1]}$RESET_COLOR" || echo -e "$DIR_COLOR${parts[n-2]}$RESET_COLOR/$DIR_COLOR${parts[n-1]}$RESET_COLOR"
     else
         echo -e "$DIR_COLOR${parts[-1]}$RESET_COLOR"
     fi
@@ -64,7 +64,7 @@ git_info() {
     echo "$(__git_ps1 ' (%s)')"
 }
 
-PS1='$(exitstatus) $(current_dir) $(git_info)\n\$ '
+PS1='$(exitstatus) $(current_dir) $(git_info)\n\$ \[\e[1 q\]'
 
 shopt -s checkwinsize
 shopt -s autocd
@@ -110,5 +110,7 @@ if [[ -z $TMUX ]]; then
     export PATH="$PATH:$HOME/Projects/meow"
     export PATH="$PATH:$HOME/opt"
 fi
+
+source "$HOME/.localbashrc"
 
 # [[ ! ${BLE_VERSION-} ]] || ble-attach
