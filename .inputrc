@@ -1,12 +1,3 @@
-set editing-mode vi
-
-set show-mode-in-prompt on
-# vertical line in insert mode
-set vi-ins-mode-string \1\e[6 q\2
-# block in movement mode
-set vi-cmd-mode-string \1\e[2 q\2
-
-
 set mark-symlinked-directories on
 set completion-ignore-case on
 # show completion with single tab
@@ -23,28 +14,61 @@ TAB:menu-complete
 
 set keyseq-timeout 500
 
-$if mode=vi
-set keymap vi-command
-# these are for vi-command mode
-Control-p:history-search-backward
-Control-n:history-search-forward
-j: history-search-forward
-k: history-search-backward
-set keymap vi-insert
-Control-p:history-search-backward
-Control-n:history-search-forward
-"kk": vi-movement-mode
-Control-b:backward-char
-Control-f:forward-char
-Control-a:beginning-of-line
-Control-e:end-of-line
-Control-l:clear-screen
-Control-g:unix-filename-rubout
-$endif
+# "\e" presents "esc" key which is a substitution of meta key(alt key)
+# "\C" and "Control" presents "Control" key
 
-$if mode=emacs
-Control-p:history-search-backward
-Control-n:history-search-forward
-Control-g:unix-filename-rubout
-$endif
+# keymaps for moving
+"\C-b":backward-char
+"\C-f":forward-char
+"\C-a":beginning-of-line
+"\C-e":end-of-line
+"\ef":forward-word
+"\eb":backward-word
+"\el":shell-forward-word
+"\eh":shell-backward-word
+"\C-l":clear-screen
 
+# keymaps for manipulating history
+"\C-p":history-search-backward
+"\C-n":history-search-forward
+
+# keymaps for changing text
+
+# delete character under cursor
+# Control-d:delete-char
+
+# move the character before cursor to the position of cursor and move cursor forward
+# if the cursor is at the end of the line, then exchange the last two characters
+"\C-t":transpose-chars
+
+# like transpose-chars, but transpose the words
+"\et":transpose-words
+# word boundaries are the same as shell-forward-word
+"\e\C-t":shell-transpose-words
+
+# uppercase, lowercase, capitalize the word following the cursor and move the cursor forward
+"\el":upcase-word
+"\eu":downcase-word
+"\ec":capitalize-word
+
+# keymaps for killing and yanking
+# kill the text after cursor to the end of the line
+"\C-k":kill-line
+# kill the text before cursor to the beginning of the line
+# Control-x-robout:backward-kill-line
+"\C-u":unix-line-discard
+
+# kill word divided by /
+"\C-g":unix-filename-rubout
+
+# kill word divided by shell
+"\ee":shell-kill-word
+"\ew":shell-backward-kill-word
+
+"\ek":kill-whole-line
+
+# edit command with $EDITOR
+"\ev":edit-and-execute-command
+
+# add sudo at the beginning of the lnie and move cursor to the end of the line
+"\es":"\eOHsudo \eOF"
