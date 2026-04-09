@@ -6,6 +6,7 @@ RESET_COLOR="\033[0m"
 OK_EMOJI="(/w\)"
 ERR_EMOJI="(o_O)"
 DIR_COLOR="\033[35m"
+HOST_COLOR="\033[34m"
 
 exitstatus() {
     if [[ $? == 0 ]]; then
@@ -54,12 +55,12 @@ git_info() {
     export GIT_PS1_SHOWUNTRACKEDFILES=1
     export GIT_PS1_STATESEPARATOR="|"
     export GIT_PS1_SHOWCOLORHINTS=1
-    echo "$(__git_ps1 ' (%s)')"
+    echo "$(__git_ps1 '(%s)')"
 }
 
 hostname() {
     if [[ -n $SSH_CONNECTION ]]; then
-        echo "$HOSTNAME "
+        echo -e "$HOST_COLOR($HOSTNAME)$RESET_COLOR "
     fi
 }
 
