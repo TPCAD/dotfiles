@@ -40,6 +40,9 @@ function fm() {
     rm -f -- "$tmp"
 }
 
+# fzf
+eval "$(fzf --bash)"
+
 # edit .zshrc
 alias ezshrc='nv $HOME/.zshrc'
 # edit .bashrc
