@@ -15,7 +15,7 @@ TAB:menu-complete
 set keyseq-timeout 500
 
 # "\e" presents "esc" key which is a substitution of meta key(alt key)
-# "\C" and "Control" presents "Control" key
+# "\C" and "Control" represents "Control" key
 
 # keymaps for moving
 "\C-b":backward-char
@@ -24,8 +24,8 @@ set keyseq-timeout 500
 "\C-e":end-of-line
 "\ef":forward-word
 "\eb":backward-word
-"\el":shell-forward-word
-"\eh":shell-backward-word
+"\e\C-f":shell-forward-word
+"\e\C-b":shell-backward-word
 "\C-l":clear-screen
 
 # keymaps for manipulating history
@@ -47,8 +47,8 @@ set keyseq-timeout 500
 "\e\C-t":shell-transpose-words
 
 # uppercase, lowercase, capitalize the word following the cursor and move the cursor forward
-"\el":upcase-word
-"\eu":downcase-word
+"\eu":upcase-word
+"\el":downcase-word
 "\ec":capitalize-word
 
 # keymaps for killing and yanking
